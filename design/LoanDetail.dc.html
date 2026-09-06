@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+*{box-sizing:border-box}
+body{margin:0;background:#F4F7F3;color:#12302C;font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
+a{color:#12302C}a:hover{color:#1F7A4D}
+.phone{width:390px;height:844px;position:relative;overflow:hidden;background:#F4F7F3;display:flex;flex-direction:column}
+.num{font-family:'Bricolage Grotesque','IBM Plex Sans',system-ui,sans-serif;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;font-feature-settings:'tnum' 1}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7F7B}
+.muted{color:#6B7F7B}
+.paid{color:#1F7A4D}.late{color:#B4342C}
+.icon{width:24px;height:24px;flex:none}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:#12302C;border:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 20px;border-radius:14px;font-weight:600;font-size:16px;border:0;font-family:inherit;white-space:nowrap}
+.btn-primary{background:#12302C;color:#F4F7F3}
+.btn-secondary{background:#FFFFFF;color:#12302C;border:1.5px solid #D5DED3}
+.chip{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid #D5DED3;background:#FFFFFF;font-weight:500;font-size:14px;color:#12302C;white-space:nowrap}
+.chip-on{background:#12302C;border-color:#12302C;color:#F4F7F3}
+.chip .count{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;opacity:0.8}
+.card{background:#FFFFFF;border:1px solid #E1E8DF;border-radius:16px}
+.strip{display:flex;gap:3px}
+.strip span{display:block;width:13px;height:6px;border-radius:2px;background:#DCE3DA}
+.strip .p{background:#1F7A4D}.strip .l{background:#B4342C}.strip .d{background:#FFFFFF;border:1.5px solid #12302C}
+.rule{height:1px;background:#E1E8DF}
+.field{display:flex;flex-direction:column;gap:6px}
+.frow{display:flex;gap:10px}
+.frow>.field{flex:1;min-width:0}
+.label{font-size:13px;font-weight:500;color:#4A5F5B}
+.input{height:48px;border-radius:12px;border:1.5px solid #D5DED3;background:#FFFFFF;padding:0 14px;display:flex;align-items:center;gap:10px;font-size:16px;color:#12302C}
+.input .ph{color:#8A9A96}
+.input.multi{min-height:72px;height:auto;align-items:flex-start;padding:12px 14px;line-height:1.4}
+.avatar{width:40px;height:40px;border-radius:12px;background:#E3ECE1;color:#12302C;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;flex:none}
+.row{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.stamp{display:inline-block;border:1.5px solid #1F7A4D;color:#1F7A4D;border-radius:4px;padding:3px 6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.08em;transform:rotate(-6deg);white-space:nowrap}
+.stamp-late{border-color:#B4342C;color:#B4342C}
+.tile{position:relative;background:#FFFFFF;border:1px solid #E1E8DF;border-radius:14px;padding:12px 12px 10px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.tile-paid{background:#EAF5EE;border-color:#CDE6D6}
+.tile-late{background:#FBEDEB;border-color:#EFCFCB}
+.tile-now{border:2px solid #12302C}
+.tile-next{opacity:0.62}
+.secno{width:28px;height:28px;border-radius:8px;background:#12302C;color:#F4F7F3;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;flex:none}
+.sechead{display:flex;align-items:center;gap:12px;padding:8px 0}
+.sechead h2{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.01em}
+.ptile{width:106px;height:106px;flex:none;border-radius:14px;border:1.5px solid #D5DED3;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#6B7F7B;font-size:12px;font-weight:500;position:relative;overflow:hidden}
+.ptile-has{border-style:solid;border-color:#CDE6D6;background:#E3ECE1;color:#12302C}
+.stepbody>.field,.stepbody>.card,.stepbody>.input,.stepbody>div{flex:0 0 auto}
+.idrow{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;background:#EAF5EE;color:#1F7A4D;font-size:12px;font-weight:600}
+</style>
+</helmet>
+<div class="phone" style="width:390px;height:900px">
+
+<div style="padding:52px 8px 0;display:flex;align-items:center;justify-content:space-between">
+  <button class="iconbtn" aria-label="Back"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg></button>
+  <div style="text-align:center">
+    <div style="font-weight:600;font-size:16px;line-height:1.2">Ramesh Kumar</div>
+    <div class="muted" style="font-size:12px">Loan L-0042</div>
+  </div>
+  <button class="iconbtn" aria-label="More"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><circle cx="6" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></button>
+</div>
+
+<div style="padding:14px 16px 0">
+  <div style="display:flex;align-items:baseline;gap:10px;border-bottom:1.5px solid #12302C;padding-bottom:8px">
+    <div class="num" style="font-weight:700;font-size:38px;line-height:1">₹60,000</div>
+    <div class="muted" style="font-size:14px;font-weight:500">12 months · ₹5,000 monthly</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:0;margin-top:12px">
+    <div style="padding:0 12px 0 0;border-right:1px solid #E1E8DF"><div class="eyebrow">Paid</div><div class="num paid" style="font-weight:700;font-size:20px;margin-top:2px">₹25,000</div></div>
+    <div style="padding:0 12px;border-right:1px solid #E1E8DF"><div class="eyebrow">Remaining</div><div class="num" style="font-weight:700;font-size:20px;margin-top:2px">₹35,000</div></div>
+    <div style="padding:0 0 0 12px"><div class="eyebrow">Next due</div><div class="num" style="font-weight:700;font-size:20px;margin-top:2px">10 Sep</div></div>
+  </div>
+  <div style="margin-top:14px"><div class="strip" style="gap:4px"><span style="width:24px;height:8px" class="p"></span><span style="width:24px;height:8px" class="p"></span><span style="width:24px;height:8px" class="p"></span><span style="width:24px;height:8px" class="p"></span><span style="width:24px;height:8px" class="p"></span><span style="width:24px;height:8px" class="d"></span><span style="width:24px;height:8px"></span><span style="width:24px;height:8px"></span><span style="width:24px;height:8px"></span><span style="width:24px;height:8px"></span><span style="width:24px;height:8px"></span><span style="width:24px;height:8px"></span></div></div>
+</div>
+
+<div style="padding:22px 16px 0;display:flex;align-items:baseline;justify-content:space-between">
+  <div class="eyebrow">Installments · Apr 2026 – Mar 2027</div>
+  <div class="muted" style="font-size:12px">5 of 12 paid</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:8px;padding:10px 16px 0">
+  <div class="tile tile-paid"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Apr ’26</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="display:flex;justify-content:flex-end"><span class="stamp">Paid · 9 Apr</span></div></div>
+  <div class="tile tile-paid"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">May</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="display:flex;justify-content:flex-end"><span class="stamp">Paid · 11 May</span></div></div>
+  <div class="tile tile-paid"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Jun</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="display:flex;justify-content:flex-end"><span class="stamp">Paid · 10 Jun</span></div></div>
+  <div class="tile tile-paid"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Jul</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="display:flex;justify-content:flex-end"><span class="stamp">Paid · 8 Jul</span></div></div>
+  <div class="tile tile-paid"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Aug</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="display:flex;justify-content:flex-end"><span class="stamp">Paid · 12 Aug</span></div></div>
+  <div class="tile tile-now"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Sep</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Sep</div></div>
+  <div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Oct</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Oct</div></div>
+  <div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Nov</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Nov</div></div>
+  <div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Dec</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Dec</div></div>
+  <div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Jan ’27</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Jan</div></div>
+  <div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Feb</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Feb</div></div>
+  <div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Mar</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Mar</div></div>
+</div>
+
+<div style="padding:20px 16px 0">
+  <div class="card" style="display:flex;align-items:center;gap:12px;padding:12px 14px">
+    <div style="width:44px;height:56px;border-radius:6px;background:#E3ECE1;border:1px solid #CDE6D6;display:flex;align-items:center;justify-content:center;color:#4A5F5B"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h6"></path></svg></div>
+    <div style="flex:1"><div style="font-weight:600;font-size:15px">Signed form</div><div class="muted" style="font-size:13px">Photographed 5 Apr 2026 · borrower and co-borrower</div></div>
+    <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#8A9A96"><path d="M9 6l6 6-6 6"></path></svg>
+  </div>
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;padding:12px 16px 20px;background:linear-gradient(180deg, rgba(244,247,243,0) 0%, #F4F7F3 30%);display:flex;gap:10px">
+  <button class="btn btn-secondary" style="width:52px;padding:0" aria-label="Call Ramesh"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg></button>
+  <button class="btn btn-primary" style="flex:1">Mark September paid · ₹5,000</button>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>

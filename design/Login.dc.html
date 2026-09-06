@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+*{box-sizing:border-box}
+body{margin:0;background:#F4F7F3;color:#12302C;font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
+a{color:#12302C}a:hover{color:#1F7A4D}
+.phone{width:390px;height:844px;position:relative;overflow:hidden;background:#F4F7F3;display:flex;flex-direction:column}
+.num{font-family:'Bricolage Grotesque','IBM Plex Sans',system-ui,sans-serif;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;font-feature-settings:'tnum' 1}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7F7B}
+.muted{color:#6B7F7B}
+.paid{color:#1F7A4D}.late{color:#B4342C}
+.icon{width:24px;height:24px;flex:none}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:#12302C;border:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 20px;border-radius:14px;font-weight:600;font-size:16px;border:0;font-family:inherit;white-space:nowrap}
+.btn-primary{background:#12302C;color:#F4F7F3}
+.btn-secondary{background:#FFFFFF;color:#12302C;border:1.5px solid #D5DED3}
+.chip{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid #D5DED3;background:#FFFFFF;font-weight:500;font-size:14px;color:#12302C;white-space:nowrap}
+.chip-on{background:#12302C;border-color:#12302C;color:#F4F7F3}
+.chip .count{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;opacity:0.8}
+.card{background:#FFFFFF;border:1px solid #E1E8DF;border-radius:16px}
+.strip{display:flex;gap:3px}
+.strip span{display:block;width:13px;height:6px;border-radius:2px;background:#DCE3DA}
+.strip .p{background:#1F7A4D}.strip .l{background:#B4342C}.strip .d{background:#FFFFFF;border:1.5px solid #12302C}
+.rule{height:1px;background:#E1E8DF}
+.field{display:flex;flex-direction:column;gap:6px}
+.frow{display:flex;gap:10px}
+.frow>.field{flex:1;min-width:0}
+.label{font-size:13px;font-weight:500;color:#4A5F5B}
+.input{height:48px;border-radius:12px;border:1.5px solid #D5DED3;background:#FFFFFF;padding:0 14px;display:flex;align-items:center;gap:10px;font-size:16px;color:#12302C}
+.input .ph{color:#8A9A96}
+.input.multi{min-height:72px;height:auto;align-items:flex-start;padding:12px 14px;line-height:1.4}
+.avatar{width:40px;height:40px;border-radius:12px;background:#E3ECE1;color:#12302C;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;flex:none}
+.row{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.stamp{display:inline-block;border:1.5px solid #1F7A4D;color:#1F7A4D;border-radius:4px;padding:3px 6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.08em;transform:rotate(-6deg);white-space:nowrap}
+.stamp-late{border-color:#B4342C;color:#B4342C}
+.tile{position:relative;background:#FFFFFF;border:1px solid #E1E8DF;border-radius:14px;padding:12px 12px 10px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.tile-paid{background:#EAF5EE;border-color:#CDE6D6}
+.tile-late{background:#FBEDEB;border-color:#EFCFCB}
+.tile-now{border:2px solid #12302C}
+.tile-next{opacity:0.62}
+.secno{width:28px;height:28px;border-radius:8px;background:#12302C;color:#F4F7F3;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;flex:none}
+.sechead{display:flex;align-items:center;gap:12px;padding:8px 0}
+.sechead h2{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.01em}
+.ptile{width:106px;height:106px;flex:none;border-radius:14px;border:1.5px solid #D5DED3;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#6B7F7B;font-size:12px;font-weight:500;position:relative;overflow:hidden}
+.ptile-has{border-style:solid;border-color:#CDE6D6;background:#E3ECE1;color:#12302C}
+.stepbody>.field,.stepbody>.card,.stepbody>.input,.stepbody>div{flex:0 0 auto}
+.idrow{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;background:#EAF5EE;color:#1F7A4D;font-size:12px;font-weight:600}
+</style>
+</helmet>
+<div class="phone" style="width:390px;height:844px">
+
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:28px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="width:56px;height:56px;border-radius:16px;background:#12302C;display:flex;align-items:center;justify-content:center">
+      <svg width="30" height="30" viewBox="0 0 16 16" fill="none" stroke="#F4F7F3" stroke-width="1.4" stroke-linecap="round"><path d="M3 4.5h10M3 8h10M3 11.5h5"></path><path d="M10.5 11.5l1.3 1.3L14 10.5" stroke="#7FD4A4"></path></svg>
+    </div>
+    <div>
+      <div class="num" style="font-weight:700;font-size:30px;line-height:1.05">Sanjay Yadav</div>
+      <div class="muted" style="font-size:15px;margin-top:6px">Loan ledger</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="field"><div class="label">Email</div><div class="input">sanjay@gmail.com</div></div>
+    <div class="field"><div class="label">Password</div><div class="input" style="letter-spacing:0.2em">••••••••••</div></div>
+    <button class="btn btn-primary" style="margin-top:6px">Sign in</button>
+    <div style="text-align:center;font-size:14px;font-weight:500;color:#4A5F5B;padding:8px">Forgot password</div>
+  </div>
+</div>
+<div class="muted" style="padding:0 28px 28px;font-size:12px">Only people on the admin list can sign in.</div>
+
+</div>
+</x-dc>
+</body>
+</html>

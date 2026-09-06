@@ -1,0 +1,11 @@
+node_modules
+dist
+dev-dist
+.env
+.env.local
+.env.*.local
+.claude/
+supabase/.temp
+supabase/.branches
+.DS_Store
+coverage

@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+*{box-sizing:border-box}
+body{margin:0;background:#F4F7F3;color:#12302C;font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
+a{color:#12302C}a:hover{color:#1F7A4D}
+.phone{width:390px;height:844px;position:relative;overflow:hidden;background:#F4F7F3;display:flex;flex-direction:column}
+.num{font-family:'Bricolage Grotesque','IBM Plex Sans',system-ui,sans-serif;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;font-feature-settings:'tnum' 1}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7F7B}
+.muted{color:#6B7F7B}
+.paid{color:#1F7A4D}.late{color:#B4342C}
+.icon{width:24px;height:24px;flex:none}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:#12302C;border:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 20px;border-radius:14px;font-weight:600;font-size:16px;border:0;font-family:inherit;white-space:nowrap}
+.btn-primary{background:#12302C;color:#F4F7F3}
+.btn-secondary{background:#FFFFFF;color:#12302C;border:1.5px solid #D5DED3}
+.chip{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid #D5DED3;background:#FFFFFF;font-weight:500;font-size:14px;color:#12302C;white-space:nowrap}
+.chip-on{background:#12302C;border-color:#12302C;color:#F4F7F3}
+.chip .count{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;opacity:0.8}
+.card{background:#FFFFFF;border:1px solid #E1E8DF;border-radius:16px}
+.strip{display:flex;gap:3px}
+.strip span{display:block;width:13px;height:6px;border-radius:2px;background:#DCE3DA}
+.strip .p{background:#1F7A4D}.strip .l{background:#B4342C}.strip .d{background:#FFFFFF;border:1.5px solid #12302C}
+.rule{height:1px;background:#E1E8DF}
+.field{display:flex;flex-direction:column;gap:6px}
+.frow{display:flex;gap:10px}
+.frow>.field{flex:1;min-width:0}
+.label{font-size:13px;font-weight:500;color:#4A5F5B}
+.input{height:48px;border-radius:12px;border:1.5px solid #D5DED3;background:#FFFFFF;padding:0 14px;display:flex;align-items:center;gap:10px;font-size:16px;color:#12302C}
+.input .ph{color:#8A9A96}
+.input.multi{min-height:72px;height:auto;align-items:flex-start;padding:12px 14px;line-height:1.4}
+.avatar{width:40px;height:40px;border-radius:12px;background:#E3ECE1;color:#12302C;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;flex:none}
+.row{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.stamp{display:inline-block;border:1.5px solid #1F7A4D;color:#1F7A4D;border-radius:4px;padding:3px 6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.08em;transform:rotate(-6deg);white-space:nowrap}
+.stamp-late{border-color:#B4342C;color:#B4342C}
+.tile{position:relative;background:#FFFFFF;border:1px solid #E1E8DF;border-radius:14px;padding:12px 12px 10px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.tile-paid{background:#EAF5EE;border-color:#CDE6D6}
+.tile-late{background:#FBEDEB;border-color:#EFCFCB}
+.tile-now{border:2px solid #12302C}
+.tile-next{opacity:0.62}
+.secno{width:28px;height:28px;border-radius:8px;background:#12302C;color:#F4F7F3;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;flex:none}
+.sechead{display:flex;align-items:center;gap:12px;padding:8px 0}
+.sechead h2{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.01em}
+.ptile{width:106px;height:106px;flex:none;border-radius:14px;border:1.5px solid #D5DED3;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#6B7F7B;font-size:12px;font-weight:500;position:relative;overflow:hidden}
+.ptile-has{border-style:solid;border-color:#CDE6D6;background:#E3ECE1;color:#12302C}
+.stepbody>.field,.stepbody>.card,.stepbody>.input,.stepbody>div{flex:0 0 auto}
+.idrow{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;background:#EAF5EE;color:#1F7A4D;font-size:12px;font-weight:600}
+</style>
+</helmet>
+<div class="phone" style="width:1000px;height:720px">
+
+<div style="padding:32px 36px;display:flex;flex-direction:column;gap:28px;height:100%;overflow:hidden">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="eyebrow">Design system</div><div class="num" style="font-weight:700;font-size:30px;line-height:1.1;margin-top:4px">Passbook</div></div>
+    <div class="muted" style="font-size:13px;max-width:520px;text-align:right">Ledger paper and ink. Green means paid, red means late, nothing else is coloured. One dark action per screen, at the thumb. Numbers are the heroes.</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(8, minmax(0, 1fr));gap:14px">
+    <div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#F4F7F3;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Paper</div><div class="muted" style="font-size:12px;margin-top:-6px">#F4F7F3 · surface</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#FFFFFF;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Card</div><div class="muted" style="font-size:12px;margin-top:-6px">#FFFFFF · raised</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#E1E8DF;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Rule</div><div class="muted" style="font-size:12px;margin-top:-6px">#E1E8DF · lines</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#12302C;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Ink</div><div class="muted" style="font-size:12px;margin-top:-6px">#12302C · text, primary</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#4A5F5B;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Ink 2</div><div class="muted" style="font-size:12px;margin-top:-6px">#4A5F5B · secondary</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#6B7F7B;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Ink 3</div><div class="muted" style="font-size:12px;margin-top:-6px">#6B7F7B · labels</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#1F7A4D;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Paid</div><div class="muted" style="font-size:12px;margin-top:-6px">#1F7A4D · green ink</div></div><div style="display:flex;flex-direction:column;gap:8px"><div style="height:64px;border-radius:12px;background:#B4342C;border:1px solid #E1E8DF"></div><div style="font-weight:600;font-size:13px">Late</div><div class="muted" style="font-size:12px;margin-top:-6px">#B4342C · red ink</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:36px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="eyebrow">Type</div>
+      <div><div class="num" style="font-weight:700;font-size:46px;line-height:1">₹42,500</div><div class="muted" style="font-size:12px;margin-top:6px">Bricolage Grotesque 700 · 46 · the hero amount</div></div>
+      <div><div class="num" style="font-weight:700;font-size:20px;line-height:1.1">₹5,000 · 10 Sep</div><div class="muted" style="font-size:12px;margin-top:4px">Bricolage 700 · 20 · tiles, summaries, names</div></div>
+      <div><div style="font-size:16px;font-weight:600">Ramesh Kumar</div><div class="muted" style="font-size:12px;margin-top:2px">IBM Plex Sans 600 · 16 · row titles</div></div>
+      <div><div style="font-size:15px">H.No 12, Ward 4, Rampur Road</div><div class="muted" style="font-size:12px;margin-top:2px">Plex 400 · 15 · body, tabular numerals on</div></div>
+      <div class="eyebrow">Eyebrow · Plex 600 · 11 · tracked</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="eyebrow">Controls</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn btn-primary">Save payment</button><button class="btn btn-secondary"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg> Call</button><div class="chip chip-on">Due <span class="count">3</span></div><div class="chip">All <span class="count">38</span></div><div class="badge"><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg> Verified</div></div>
+      <div style="display:flex;gap:10px;align-items:center"><div class="input" style="width:220px">+91 98765 43210</div><div class="input" style="width:200px;background:#EDF2EB;border-color:#EDF2EB"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#6B7F7B"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span class="ph">Search</span></div></div>
+      <div style="display:flex;gap:16px;align-items:center;margin-top:4px">
+        <div style="display:flex;flex-direction:column;gap:6px"><div class="eyebrow">Month strip</div><div class="strip" style="gap:4px"><span style="width:18px;height:7px" class="p"></span><span style="width:18px;height:7px" class="p"></span><span style="width:18px;height:7px" class="p"></span><span style="width:18px;height:7px" class="p"></span><span style="width:18px;height:7px" class="p"></span><span style="width:18px;height:7px" class="d"></span><span style="width:18px;height:7px"></span><span style="width:18px;height:7px"></span><span style="width:18px;height:7px"></span><span style="width:18px;height:7px"></span><span style="width:18px;height:7px"></span><span style="width:18px;height:7px"></span></div></div>
+        <div class="muted" style="font-size:12px;line-height:1.6">green · paid<br>outlined · due now<br>red · late<br>grey · upcoming</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div class="eyebrow">Installment tiles</div>
+    <div style="display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:10px;max-width:520px">
+      <div class="tile tile-paid"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Aug</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="display:flex;justify-content:flex-end"><span class="stamp">Paid · 12 Aug</span></div></div><div class="tile tile-now"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Sep</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Sep</div></div><div class="tile tile-late"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Aug</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹3,500</div><div style="display:flex;justify-content:flex-end"><span class="stamp stamp-late">Late · 36 days</span></div></div><div class="tile tile-next"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:600;color:#4A5F5B">Oct</div></div><div class="num" style="font-weight:700;font-size:18px;line-height:1">₹5,000</div><div style="font-size:12px;font-weight:500;color:#4A5F5B">Due 10 Oct</div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>

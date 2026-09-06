@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+*{box-sizing:border-box}
+body{margin:0;background:#F4F7F3;color:#12302C;font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
+a{color:#12302C}a:hover{color:#1F7A4D}
+.phone{width:390px;height:844px;position:relative;overflow:hidden;background:#F4F7F3;display:flex;flex-direction:column}
+.num{font-family:'Bricolage Grotesque','IBM Plex Sans',system-ui,sans-serif;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;font-feature-settings:'tnum' 1}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7F7B}
+.muted{color:#6B7F7B}
+.paid{color:#1F7A4D}.late{color:#B4342C}
+.icon{width:24px;height:24px;flex:none}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:#12302C;border:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 20px;border-radius:14px;font-weight:600;font-size:16px;border:0;font-family:inherit;white-space:nowrap}
+.btn-primary{background:#12302C;color:#F4F7F3}
+.btn-secondary{background:#FFFFFF;color:#12302C;border:1.5px solid #D5DED3}
+.chip{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid #D5DED3;background:#FFFFFF;font-weight:500;font-size:14px;color:#12302C;white-space:nowrap}
+.chip-on{background:#12302C;border-color:#12302C;color:#F4F7F3}
+.chip .count{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;opacity:0.8}
+.card{background:#FFFFFF;border:1px solid #E1E8DF;border-radius:16px}
+.strip{display:flex;gap:3px}
+.strip span{display:block;width:13px;height:6px;border-radius:2px;background:#DCE3DA}
+.strip .p{background:#1F7A4D}.strip .l{background:#B4342C}.strip .d{background:#FFFFFF;border:1.5px solid #12302C}
+.rule{height:1px;background:#E1E8DF}
+.field{display:flex;flex-direction:column;gap:6px}
+.frow{display:flex;gap:10px}
+.frow>.field{flex:1;min-width:0}
+.label{font-size:13px;font-weight:500;color:#4A5F5B}
+.input{height:48px;border-radius:12px;border:1.5px solid #D5DED3;background:#FFFFFF;padding:0 14px;display:flex;align-items:center;gap:10px;font-size:16px;color:#12302C}
+.input .ph{color:#8A9A96}
+.input.multi{min-height:72px;height:auto;align-items:flex-start;padding:12px 14px;line-height:1.4}
+.avatar{width:40px;height:40px;border-radius:12px;background:#E3ECE1;color:#12302C;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;flex:none}
+.row{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.stamp{display:inline-block;border:1.5px solid #1F7A4D;color:#1F7A4D;border-radius:4px;padding:3px 6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.08em;transform:rotate(-6deg);white-space:nowrap}
+.stamp-late{border-color:#B4342C;color:#B4342C}
+.tile{position:relative;background:#FFFFFF;border:1px solid #E1E8DF;border-radius:14px;padding:12px 12px 10px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.tile-paid{background:#EAF5EE;border-color:#CDE6D6}
+.tile-late{background:#FBEDEB;border-color:#EFCFCB}
+.tile-now{border:2px solid #12302C}
+.tile-next{opacity:0.62}
+.secno{width:28px;height:28px;border-radius:8px;background:#12302C;color:#F4F7F3;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;flex:none}
+.sechead{display:flex;align-items:center;gap:12px;padding:8px 0}
+.sechead h2{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.01em}
+.ptile{width:106px;height:106px;flex:none;border-radius:14px;border:1.5px solid #D5DED3;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#6B7F7B;font-size:12px;font-weight:500;position:relative;overflow:hidden}
+.ptile-has{border-style:solid;border-color:#CDE6D6;background:#E3ECE1;color:#12302C}
+.stepbody>.field,.stepbody>.card,.stepbody>.input,.stepbody>div{flex:0 0 auto}
+.idrow{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;background:#EAF5EE;color:#1F7A4D;font-size:12px;font-weight:600}
+
+.night{background:#0C0F0E;color:#E8EDE9}
+.night .g{background:#1A1F1D;border-radius:12px}
+</style>
+</helmet>
+<div class="phone" style="width:390px;height:844px">
+
+<div class="night" style="position:absolute;inset:0;padding:56px 16px 0;display:flex;flex-direction:column;gap:14px;font-family:system-ui,sans-serif">
+  <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:600">Sanjay Yadav</div><div class="g" style="width:36px;height:36px"></div></div>
+  <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A948F;margin-top:10px">September · to collect</div>
+  <div style="font-size:44px;font-weight:700;letter-spacing:-0.02em;color:#F2B84B">₹25,500</div>
+  <div class="g" style="height:8px;border-radius:4px;overflow:hidden"><div style="width:62%;height:100%;background:#F2B84B"></div></div>
+  <div style="display:flex;gap:8px"><div style="height:34px;padding:0 14px;border-radius:999px;background:#F2B84B;color:#0C0F0E;display:flex;align-items:center;font-weight:600;font-size:13px">Due 3</div><div class="g" style="height:34px;padding:0 14px;display:flex;align-items:center;font-size:13px">Overdue 2</div><div class="g" style="height:34px;padding:0 14px;display:flex;align-items:center;font-size:13px">All 38</div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+    <div class="g" style="height:74px;display:flex;align-items:center;gap:12px;padding:0 14px"><div style="width:40px;height:40px;border-radius:10px;background:#2A312E"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="width:120px;height:10px;border-radius:5px;background:#3A423E"></div><div style="width:180px;height:8px;border-radius:4px;background:#2A312E"></div></div><div style="width:56px;height:12px;border-radius:6px;background:#D9534F"></div></div><div class="g" style="height:74px;display:flex;align-items:center;gap:12px;padding:0 14px"><div style="width:40px;height:40px;border-radius:10px;background:#2A312E"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="width:120px;height:10px;border-radius:5px;background:#3A423E"></div><div style="width:180px;height:8px;border-radius:4px;background:#2A312E"></div></div><div style="width:56px;height:12px;border-radius:6px;background:#D9534F"></div></div><div class="g" style="height:74px;display:flex;align-items:center;gap:12px;padding:0 14px"><div style="width:40px;height:40px;border-radius:10px;background:#2A312E"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="width:120px;height:10px;border-radius:5px;background:#3A423E"></div><div style="width:180px;height:8px;border-radius:4px;background:#2A312E"></div></div><div style="width:56px;height:12px;border-radius:6px;background:#F2B84B"></div></div><div class="g" style="height:74px;display:flex;align-items:center;gap:12px;padding:0 14px"><div style="width:40px;height:40px;border-radius:10px;background:#2A312E"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="width:120px;height:10px;border-radius:5px;background:#3A423E"></div><div style="width:180px;height:8px;border-radius:4px;background:#2A312E"></div></div><div style="width:56px;height:12px;border-radius:6px;background:#F2B84B"></div></div><div class="g" style="height:74px;display:flex;align-items:center;gap:12px;padding:0 14px"><div style="width:40px;height:40px;border-radius:10px;background:#2A312E"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="width:120px;height:10px;border-radius:5px;background:#3A423E"></div><div style="width:180px;height:8px;border-radius:4px;background:#2A312E"></div></div><div style="width:56px;height:12px;border-radius:6px;background:#F2B84B"></div></div>
+  </div>
+  <div style="position:absolute;right:16px;bottom:24px;height:56px;padding:0 20px;border-radius:18px;background:#F2B84B;color:#0C0F0E;display:flex;align-items:center;font-weight:700">+ New application</div>
+  <div style="position:absolute;left:16px;bottom:100px;font-size:12px;color:#8A948F;max-width:200px">Direction B · Night counter<br>dark OLED, one amber accent</div>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>

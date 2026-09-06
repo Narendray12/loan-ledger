@@ -1,0 +1,150 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "Home \u00b7 collection this month"
+    },
+    {
+      "file": "LoanDetail.dc.html",
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 900,
+      "title": "Loan \u00b7 monthly cards"
+    },
+    {
+      "file": "MarkPaid.dc.html",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "Mark paid"
+    },
+    {
+      "file": "PersonDetail.dc.html",
+      "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 900,
+      "title": "Person"
+    },
+    {
+      "file": "Login.dc.html",
+      "x": 1880,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "Sign in"
+    },
+    {
+      "file": "Step1Loan.dc.html",
+      "x": 0,
+      "y": 1180,
+      "w": 390,
+      "h": 844,
+      "title": "New application \u00b7 1 Loan details"
+    },
+    {
+      "file": "Step2Borrower.dc.html",
+      "x": 470,
+      "y": 1180,
+      "w": 390,
+      "h": 960,
+      "title": "2 Borrower"
+    },
+    {
+      "file": "Step3CoBorrower.dc.html",
+      "x": 940,
+      "y": 1180,
+      "w": 390,
+      "h": 960,
+      "title": "3 Co-borrower"
+    },
+    {
+      "file": "Step4Business.dc.html",
+      "x": 1410,
+      "y": 1180,
+      "w": 390,
+      "h": 844,
+      "title": "4 Occupation and business"
+    },
+    {
+      "file": "Step5References.dc.html",
+      "x": 1880,
+      "y": 1180,
+      "w": 390,
+      "h": 900,
+      "title": "5 References"
+    },
+    {
+      "file": "Step6SignedForm.dc.html",
+      "x": 2350,
+      "y": 1180,
+      "w": 390,
+      "h": 844,
+      "title": "6 Signed form and save"
+    },
+    {
+      "file": "IDSheet.dc.html",
+      "x": 2820,
+      "y": 1180,
+      "w": 390,
+      "h": 844,
+      "title": "ID proof sheet (from step 2 or 3)"
+    },
+    {
+      "file": "System.dc.html",
+      "x": 0,
+      "y": 2280,
+      "w": 1000,
+      "h": 720,
+      "title": "Design system"
+    },
+    {
+      "file": "DirectionNight.dc.html",
+      "x": 1100,
+      "y": 2280,
+      "w": 390,
+      "h": 844,
+      "title": "Direction B \u00b7 Night counter (sketch)"
+    },
+    {
+      "file": "DirectionCards.dc.html",
+      "x": 1570,
+      "y": 2280,
+      "w": 390,
+      "h": 844,
+      "title": "Direction C \u00b7 Calm cards (sketch)"
+    }
+  ],
+  "annotations": [
+    {
+      "id": "direction",
+      "x": 0,
+      "y": -150,
+      "w": 560,
+      "text": "Direction A \u00b7 Passbook. Ledger paper and ink. Green ink means paid, red ink means late, nothing else is coloured. Numbers in Bricolage Grotesque, interface text in IBM Plex Sans (its Devanagari sibling covers Hindi later). The signature: one tile per month with a stamp when paid, and the twelve-cell month strip on every row.\nNames, amounts and dates are sample data."
+    },
+    {
+      "id": "steps",
+      "x": 0,
+      "y": 1030,
+      "w": 760,
+      "text": "New application, one step per section of the paper form, so the lender transcribes top to bottom and the step number matches the number printed on the page. Back and Next sit at the thumb. Step 3 can be skipped. A person can hold several ID proofs: each is its own entry with a type, number and front/back photos, edited in the sheet at the far right. Every step saves to the phone as it is typed. The last step photographs the signed declaration and reviews everything before saving."
+    },
+    {
+      "id": "alternates",
+      "x": 1100,
+      "y": 2130,
+      "w": 860,
+      "text": "Two other directions, sketched low-fi so the comparison is fair. B \u00b7 Night counter: dark OLED with one amber accent. Looks sharp, but reads worse in daylight at a doorstep. C \u00b7 Calm cards: the standard fintech look. Safe, familiar, forgettable."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

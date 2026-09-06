@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <style>
+*{box-sizing:border-box}
+body{margin:0;background:#F4F7F3;color:#12302C;font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-feature-settings:'tnum' 1;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
+a{color:#12302C}a:hover{color:#1F7A4D}
+.phone{width:390px;height:844px;position:relative;overflow:hidden;background:#F4F7F3;display:flex;flex-direction:column}
+.num{font-family:'Bricolage Grotesque','IBM Plex Sans',system-ui,sans-serif;font-variation-settings:'opsz' 96;letter-spacing:-0.02em;font-feature-settings:'tnum' 1}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6B7F7B}
+.muted{color:#6B7F7B}
+.paid{color:#1F7A4D}.late{color:#B4342C}
+.icon{width:24px;height:24px;flex:none}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:#12302C;border:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 20px;border-radius:14px;font-weight:600;font-size:16px;border:0;font-family:inherit;white-space:nowrap}
+.btn-primary{background:#12302C;color:#F4F7F3}
+.btn-secondary{background:#FFFFFF;color:#12302C;border:1.5px solid #D5DED3}
+.chip{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:1.5px solid #D5DED3;background:#FFFFFF;font-weight:500;font-size:14px;color:#12302C;white-space:nowrap}
+.chip-on{background:#12302C;border-color:#12302C;color:#F4F7F3}
+.chip .count{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;opacity:0.8}
+.card{background:#FFFFFF;border:1px solid #E1E8DF;border-radius:16px}
+.strip{display:flex;gap:3px}
+.strip span{display:block;width:13px;height:6px;border-radius:2px;background:#DCE3DA}
+.strip .p{background:#1F7A4D}.strip .l{background:#B4342C}.strip .d{background:#FFFFFF;border:1.5px solid #12302C}
+.rule{height:1px;background:#E1E8DF}
+.field{display:flex;flex-direction:column;gap:6px}
+.frow{display:flex;gap:10px}
+.frow>.field{flex:1;min-width:0}
+.label{font-size:13px;font-weight:500;color:#4A5F5B}
+.input{height:48px;border-radius:12px;border:1.5px solid #D5DED3;background:#FFFFFF;padding:0 14px;display:flex;align-items:center;gap:10px;font-size:16px;color:#12302C}
+.input .ph{color:#8A9A96}
+.input.multi{min-height:72px;height:auto;align-items:flex-start;padding:12px 14px;line-height:1.4}
+.avatar{width:40px;height:40px;border-radius:12px;background:#E3ECE1;color:#12302C;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;flex:none}
+.row{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.stamp{display:inline-block;border:1.5px solid #1F7A4D;color:#1F7A4D;border-radius:4px;padding:3px 6px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.08em;transform:rotate(-6deg);white-space:nowrap}
+.stamp-late{border-color:#B4342C;color:#B4342C}
+.tile{position:relative;background:#FFFFFF;border:1px solid #E1E8DF;border-radius:14px;padding:12px 12px 10px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.tile-paid{background:#EAF5EE;border-color:#CDE6D6}
+.tile-late{background:#FBEDEB;border-color:#EFCFCB}
+.tile-now{border:2px solid #12302C}
+.tile-next{opacity:0.62}
+.secno{width:28px;height:28px;border-radius:8px;background:#12302C;color:#F4F7F3;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;flex:none}
+.sechead{display:flex;align-items:center;gap:12px;padding:8px 0}
+.sechead h2{margin:0;font-size:17px;font-weight:600;letter-spacing:-0.01em}
+.ptile{width:106px;height:106px;flex:none;border-radius:14px;border:1.5px solid #D5DED3;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#6B7F7B;font-size:12px;font-weight:500;position:relative;overflow:hidden}
+.ptile-has{border-style:solid;border-color:#CDE6D6;background:#E3ECE1;color:#12302C}
+.stepbody>.field,.stepbody>.card,.stepbody>.input,.stepbody>div{flex:0 0 auto}
+.idrow{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.badge{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;background:#EAF5EE;color:#1F7A4D;font-size:12px;font-weight:600}
+</style>
+</helmet>
+<div class="phone" style="width:390px;height:900px">
+
+<div style="padding:52px 8px 0;display:flex;align-items:center;justify-content:space-between">
+  <button class="iconbtn" aria-label="Back"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg></button>
+  <button class="iconbtn" aria-label="Edit"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="M4 20l4-1L19 8l-3-3L5 16z"></path></svg></button>
+</div>
+<div style="padding:6px 16px 0;display:flex;align-items:center;gap:16px">
+  <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(180deg,#DCE8DA,#C6D6C4);display:flex;align-items:center;justify-content:center;color:#4A5F5B;flex:none"><svg class="icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:34px;height:34px"><circle cx="12" cy="8.5" r="4"></circle><path d="M4 20c1-4 4-6 8-6s7 2 8 6"></path></svg></div>
+  <div style="min-width:0">
+    <div class="num" style="font-weight:700;font-size:28px;line-height:1.05">Ramesh Kumar</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+      <div style="font-size:15px;font-weight:500">+91 98765 43210</div>
+      <div class="badge"><svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg> Verified</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="margin:18px 16px 0">
+  <div class="row" style="justify-content:space-between"><div><div class="eyebrow">Aadhaar</div><div class="num" style="font-weight:600;font-size:18px;margin-top:2px;letter-spacing:0.04em">•••• •••• 5246</div></div><div style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"></path><circle cx="12" cy="12" r="3"></circle></svg> Reveal</div></div>
+  <div class="rule" style="margin:0 16px"></div>
+  <div class="row" style="justify-content:space-between"><div><div class="eyebrow">PAN</div><div class="num" style="font-weight:600;font-size:18px;margin-top:2px;letter-spacing:0.04em">•••••• 234F</div></div><div style="display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"></path><circle cx="12" cy="12" r="3"></circle></svg> Reveal</div></div>
+  <div class="rule" style="margin:0 16px"></div>
+  <div class="row"><div><div class="eyebrow">Address</div><div style="margin-top:2px;font-size:15px">H.No 12, Ward 4, Rampur Road, Sitapur 261001</div></div></div>
+  <div class="rule" style="margin:0 16px"></div>
+  <div class="row"><div><div class="eyebrow">Occupation</div><div style="margin-top:2px;font-size:15px">Shop owner · Kumar General Store</div></div></div>
+</div>
+
+<div style="padding:20px 16px 0">
+  <div class="eyebrow">Photos</div>
+  <div style="display:flex;gap:10px;margin-top:10px"><div class="ptile ptile-has" style="width:78px;height:78px"><div style="position:absolute;inset:0;background:linear-gradient(180deg,#DCE8DA,#C6D6C4)"></div><div style="position:absolute;inset:auto 0 0 0;padding:5px 7px;background:rgba(18,48,44,0.55);color:#F4F7F3;font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Person</div><svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;position:relative;color:#4A5F5B"><circle cx="12" cy="8.5" r="4"></circle><path d="M4 20c1-4 4-6 8-6s7 2 8 6"></path></svg></div><div class="ptile ptile-has" style="width:78px;height:78px"><div style="position:absolute;inset:0;background:linear-gradient(180deg,#E6EDE4,#D3DFD0)"></div><div style="position:absolute;inset:auto 0 0 0;padding:5px 7px;background:rgba(18,48,44,0.55);color:#F4F7F3;font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Aadhaar</div><svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;position:relative;color:#4A5F5B"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><path d="M13 10h5M13 14h5M5.5 16c.5-1.5 1.5-2.5 3-2.5s2.5 1 3 2.5"></path></svg></div><div class="ptile ptile-has" style="width:78px;height:78px"><div style="position:absolute;inset:0;background:linear-gradient(180deg,#E6EDE4,#D3DFD0)"></div><div style="position:absolute;inset:auto 0 0 0;padding:5px 7px;background:rgba(18,48,44,0.55);color:#F4F7F3;font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Back</div><svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;position:relative;color:#4A5F5B"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><path d="M13 10h5M13 14h5M5.5 16c.5-1.5 1.5-2.5 3-2.5s2.5 1 3 2.5"></path></svg></div><div class="ptile ptile-has" style="width:78px;height:78px"><div style="position:absolute;inset:0;background:linear-gradient(180deg,#E6EDE4,#D3DFD0)"></div><div style="position:absolute;inset:auto 0 0 0;padding:5px 7px;background:rgba(18,48,44,0.55);color:#F4F7F3;font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">PAN</div><svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:30px;height:30px;position:relative;color:#4A5F5B"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="11" r="2"></circle><path d="M13 10h5M13 14h5M5.5 16c.5-1.5 1.5-2.5 3-2.5s2.5 1 3 2.5"></path></svg></div></div>
+</div>
+
+<div style="padding:20px 16px 0;flex:1">
+  <div class="eyebrow">Loans</div>
+  <div class="card" style="margin-top:10px">
+    <div class="row" style="justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-weight:600;font-size:16px">L-0042 · <span class="num">₹60,000</span></div>
+        <div class="strip" style="gap:3px"><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="d"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="muted" style="font-size:13px">₹35,000 remaining · next due 10 Sep</div>
+      </div>
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#8A9A96"><path d="M9 6l6 6-6 6"></path></svg>
+    </div>
+    <div class="rule" style="margin:0 16px"></div>
+    <div class="row" style="justify-content:space-between;opacity:0.7">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-weight:600;font-size:16px">L-0017 · <span class="num">₹20,000</span></div>
+        <div class="strip" style="gap:3px"><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span></div>
+        <div class="muted" style="font-size:13px">Closed 2 Mar 2026</div>
+      </div>
+      <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#8A9A96"><path d="M9 6l6 6-6 6"></path></svg>
+    </div>
+  </div>
+</div>
+<div style="padding:12px 16px 24px"><button class="btn btn-secondary" style="width:100%"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M12 5v14M5 12h14"></path></svg> New loan for Ramesh</button></div>
+
+</div>
+</x-dc>
+</body>
+</html>

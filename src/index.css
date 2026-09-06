@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+/* Passbook design system: ledger paper and ink. Green means paid, red means late,
+   nothing else is coloured. Amounts and names in Bricolage Grotesque, everything else in
+   IBM Plex Sans with tabular numerals. */
+@theme {
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'IBM Plex Sans', system-ui, sans-serif;
+
+  --color-paper: #f4f7f3;
+  --color-tint: #e3ece1;
+  --color-tint-2: #edf2eb;
+  --color-rule: #e1e8df;
+  --color-rule-2: #d5ded3;
+  --color-ink: #12302c;
+  --color-ink-2: #4a5f5b;
+  --color-ink-3: #6b7f7b;
+  --color-ink-4: #8a9a96;
+  --color-paid: #1f7a4d;
+  --color-paid-bg: #eaf5ee;
+  --color-paid-line: #cde6d6;
+  --color-late: #b4342c;
+  --color-late-bg: #fbedeb;
+  --color-late-line: #efcfcb;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--color-paper);
+}
+
+body {
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: 'tnum' 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Amounts, names, headings. */
+.num {
+  font-family: var(--font-display);
+  font-variation-settings: 'opsz' 96;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* The ink stamp on a paid (or late) installment tile. */
+.stamp {
+  display: inline-block;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+  white-space: nowrap;
+}
+
+/* Native <dialog> styled as a bottom sheet. */
+dialog.sheet {
+  position: fixed;
+  inset: auto 0 0 0;
+  margin: 0;
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 92dvh;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+}
+dialog.sheet::backdrop {
+  background: rgb(18 48 44 / 0.42);
+}
+@media (min-width: 640px) {
+  dialog.sheet {
+    inset: 0;
+    margin: auto;
+    width: 480px;
+    max-width: 480px;
+  }
+}
+
+/* 16px stops iOS from zooming into fields; date inputs get the same height as text inputs.
+   In the base layer so utilities like text-[44px] still win. */
+@layer base {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  input[type='date'] {
+    min-height: 3rem;
+  }
+}
