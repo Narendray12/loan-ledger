@@ -81,79 +81,27 @@ export const Textarea = ({ className, ...props }: ComponentProps<'textarea'>) =>
   <textarea rows={2} className={cx(control, 'py-3', className)} {...props} />
 )
 
-function Panel({
-  title,
-  subtitle,
-  children,
-}: {
-  title: string
-  subtitle?: string
-  children: ReactNode
-}) {
-  return (
-    <div className="max-h-[92dvh] overflow-y-auto rounded-t-3xl bg-white px-5 pt-2.5 pb-[max(1.5rem,env(safe-area-inset-bottom))] shadow-[0_-12px_40px_rgba(18,48,44,0.18)] sm:rounded-3xl">
-      <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-rule-2" />
-      <div className="mb-4">
-        <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
-        {subtitle && <p className="mt-0.5 text-[13px] text-ink-3">{subtitle}</p>}
-      </div>
-      {children}
-    </div>
-  )
-}
-
-/**
- * Bottom sheet: grabber, title, optional subtitle. Modal by default on a native <dialog>.
- * `modal={false}` renders a plain overlay instead: a modal dialog makes the rest of the page
- * inert, which blocks popups injected outside it (the reCAPTCHA challenge during OTP).
- */
+/** Bottom sheet on a native <dialog>: grabber, title, optional subtitle. */
 export function Sheet({
   open,
   onClose,
   title,
   subtitle,
   children,
-  modal = true,
 }: {
   open: boolean
   onClose: () => void
   title: string
   subtitle?: string
   children: ReactNode
-  modal?: boolean
 }) {
   const ref = useRef<HTMLDialogElement>(null)
   useEffect(() => {
-    if (!modal) return
     const d = ref.current
     if (!d) return
     if (open && !d.open) d.showModal()
     else if (!open && d.open) d.close()
-  }, [open, modal])
-  useEffect(() => {
-    if (modal || !open) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [modal, open, onClose])
-
-  if (!modal) {
-    if (!open) return null
-    return (
-      <div
-        className="fixed inset-0 z-40 flex items-end justify-center sm:items-center"
-        role="dialog"
-        aria-modal="true"
-      >
-        <div className="absolute inset-0 bg-ink/40" onClick={onClose} />
-        <div className="relative w-full sm:w-[480px]">
-          <Panel title={title} subtitle={subtitle}>
-            {children}
-          </Panel>
-        </div>
-      </div>
-    )
-  }
+  }, [open])
   return (
     <dialog
       ref={ref}
@@ -161,9 +109,14 @@ export function Sheet({
       onClose={onClose}
       onClick={(e) => e.target === ref.current && onClose()}
     >
-      <Panel title={title} subtitle={subtitle}>
+      <div className="max-h-[92dvh] overflow-y-auto rounded-t-3xl bg-white px-5 pt-2.5 pb-[max(1.5rem,env(safe-area-inset-bottom))] shadow-[0_-12px_40px_rgba(18,48,44,0.18)] sm:rounded-3xl">
+        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-rule-2" />
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
+          {subtitle && <p className="mt-0.5 text-[13px] text-ink-3">{subtitle}</p>}
+        </div>
         {children}
-      </Panel>
+      </div>
     </dialog>
   )
 }
