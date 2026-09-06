@@ -1,4 +1,4 @@
-# Loan Ledger
+# DevKripa
 
 Mobile-first PWA for a money lender. The admin types the paper **ऋण आवेदन पत्र / Loan Application Form** into the app, verifies the borrower's mobile by calling it in front of them, photographs the person, their ID and the signed form, and then tracks every loan as **monthly cards** (paid / unpaid, mark paid, undo).
 

@@ -5,7 +5,6 @@ import { db } from '../lib/db'
 import { cardStatus, loanSummary } from '../lib/cards'
 import { discardDraftPhotos } from '../lib/docs'
 import { fmtDayMonth, inr, loanLabel, monthName, todayISO } from '../lib/format'
-import { LENDER } from '../lib/supabase'
 import { fromE164 } from '../lib/validators'
 import type { Installment, Loan, Person } from '../lib/types'
 import { Avatar, Card, Chip, Count, cx, Eyebrow, IconButton, Rule } from '../components/ui'
@@ -158,7 +157,7 @@ export function People() {
         <div className="mx-auto flex max-w-xl items-center justify-between px-4 pb-1">
           <div className="flex items-center gap-2.5">
             <BrandMark />
-            <span className="text-base font-semibold">{LENDER}</span>
+            <span className="text-base font-semibold">DevKripa</span>
           </div>
           <div className="flex items-center gap-0.5">
             <SyncStatus />

@@ -44,8 +44,8 @@ export function Login() {
         <div className="space-y-3.5">
           <BrandMark size={56} />
           <div>
-            <h1 className="num text-3xl leading-tight font-bold">{LENDER}</h1>
-            <p className="mt-1.5 text-[15px] text-ink-3">Loan ledger</p>
+            <h1 className="num text-3xl leading-tight font-bold">DevKripa</h1>
+            <p className="mt-1.5 text-[15px] text-ink-3">Loan ledger · {LENDER}</p>
           </div>
         </div>
         <form onSubmit={(e) => void submit(e)} className="space-y-3.5">

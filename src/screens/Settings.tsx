@@ -237,7 +237,7 @@ export function Settings() {
               ? 'Syncing…'
               : `Sign out${pending > 0 ? ` · ${pending} change(s) waiting to sync` : ''}`}
           </Button>
-          <p className="text-center text-xs text-ink-4">Loan Ledger v{__APP_VERSION__}</p>
+          <p className="text-center text-xs text-ink-4">DevKripa v{__APP_VERSION__}</p>
         </section>
       </Page>
 

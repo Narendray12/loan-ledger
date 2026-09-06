@@ -22,8 +22,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg'],
       manifest: {
-        name: 'Loan Ledger',
-        short_name: 'Loans',
+        name: 'DevKripa',
+        short_name: 'DevKripa',
         description: 'Loan application register and monthly collection ledger',
         theme_color: '#f4f7f3',
         background_color: '#f4f7f3',
