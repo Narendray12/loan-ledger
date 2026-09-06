@@ -1,15 +1,25 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../lib/db'
 import { signOutAndWipe } from '../lib/auth'
 import { cardStatus } from '../lib/cards'
 import { errorMessage, loanLabel, todayISO } from '../lib/format'
-import { sync } from '../lib/sync'
+import { sync, useSyncState } from '../lib/sync'
 import { supabase } from '../lib/supabase'
 import { fromE164 } from '../lib/validators'
 import { ID_LABELS } from '../lib/types'
-import { Button, Card, Eyebrow, Field, Input, Notice, Page, Rule, TopBar } from '../components/ui'
+import {
+  Button,
+  Card,
+  Eyebrow,
+  Field,
+  Input,
+  Notice,
+  Page,
+  Rule,
+  Sheet,
+  TopBar,
+} from '../components/ui'
 
 const csv = (rows: (string | number | null | undefined)[][]) =>
   rows.map((r) => r.map((v) => `"${String(v ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n')
@@ -23,12 +33,14 @@ function download(name: string, text: string) {
 }
 
 export function Settings() {
-  const navigate = useNavigate()
   const [email, setEmail] = useState<string>('')
   const [admins, setAdmins] = useState<{ user_id: string; name: string | null }[] | null>(null)
   const [newAdmin, setNewAdmin] = useState('')
   const [msg, setMsg] = useState<{ tone: 'error' | 'success'; text: string } | null>(null)
   const pending = useLiveQuery(() => db.outbox.count(), []) ?? 0
+  const syncState = useSyncState()
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [busy, setBusy] = useState(false)
 
   useEffect(() => {
     void supabase.auth.getUser().then(({ data }) => setEmail(data.user?.email ?? ''))
@@ -131,13 +143,25 @@ export function Settings() {
     )
   }
 
+  // One last try to push queued changes, capped so a stuck upload cannot block signing out.
+  const askLogout = async () => {
+    setMsg(null)
+    if (pending > 0 && navigator.onLine) {
+      setBusy(true)
+      await Promise.race([sync(), new Promise((r) => setTimeout(r, 8000))])
+      setBusy(false)
+    }
+    setConfirmOpen(true)
+  }
+
   const logout = async () => {
-    if (pending > 0 && navigator.onLine) await sync()
+    setBusy(true)
     try {
-      if (!confirm('Sign out? All data on this phone is removed (it stays on the server).')) return
       await signOutAndWipe()
-      navigate('/login', { replace: true })
+      location.assign(`${import.meta.env.BASE_URL}login`)
     } catch (e) {
+      setBusy(false)
+      setConfirmOpen(false)
       setMsg({ tone: 'error', text: errorMessage(e) })
     }
   }
@@ -203,12 +227,53 @@ export function Settings() {
         {msg && <Notice tone={msg.tone}>{msg.text}</Notice>}
 
         <section className="space-y-2">
-          <Button variant="danger" className="w-full" onClick={() => void logout()}>
-            Sign out{pending > 0 ? ` · ${pending} change(s) waiting to sync` : ''}
+          <Button
+            variant="danger"
+            className="w-full"
+            onClick={() => void askLogout()}
+            disabled={busy}
+          >
+            {busy
+              ? 'Syncing…'
+              : `Sign out${pending > 0 ? ` · ${pending} change(s) waiting to sync` : ''}`}
           </Button>
           <p className="text-center text-xs text-ink-4">Loan Ledger v{__APP_VERSION__}</p>
         </section>
       </Page>
+
+      <Sheet
+        open={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        title="Sign out?"
+        subtitle={
+          pending > 0
+            ? `${pending} change(s) have not reached the server yet. Signing out deletes them from this phone.`
+            : 'Everything on this phone is removed. It stays on the server.'
+        }
+      >
+        <div className="space-y-3.5">
+          {pending > 0 && syncState.error && <Notice tone="error">{syncState.error}</Notice>}
+          <div className="flex gap-2.5">
+            {pending > 0 ? (
+              <Button
+                variant="danger"
+                className="flex-1"
+                onClick={() => void logout()}
+                disabled={busy}
+              >
+                Sign out anyway
+              </Button>
+            ) : (
+              <Button className="flex-1" onClick={() => void logout()} disabled={busy}>
+                Sign out
+              </Button>
+            )}
+            <Button variant="secondary" className="flex-1" onClick={() => setConfirmOpen(false)}>
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </Sheet>
     </>
   )
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './supabase'
-import { db, wipeLocal } from './db'
+import { wipeLocal } from './db'
 import { resetKeyCache } from './crypto'
 
 /** undefined while loading, null when signed out. */
@@ -22,14 +22,19 @@ export function useSession(): Session | null | undefined {
   return session
 }
 
-/** Signs out and forgets everything on this device. Refuses while changes are still queued. */
+/**
+ * Signs out and forgets everything on this device. Works offline too: if the server cannot be
+ * reached the local session is dropped anyway, so the phone is always left clean.
+ */
 export async function signOutAndWipe(): Promise<void> {
-  const pending = await db.outbox.count()
-  if (pending > 0)
-    throw new Error(
-      `${pending} change(s) are not synced yet. Connect to the internet and sync first.`,
-    )
-  await supabase.auth.signOut()
+  const { error } = await supabase.auth
+    .signOut({ scope: 'local' })
+    .catch((e: unknown) => ({ error: e }))
+  if (error) {
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith('sb-')) localStorage.removeItem(key)
+    }
+  }
   await wipeLocal()
   resetKeyCache()
 }
