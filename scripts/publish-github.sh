@@ -18,7 +18,7 @@ else
 fi
 
 # Build-time settings for the Pages workflow (values are read from .env, never printed).
-for key in VITE_SUPABASE_URL VITE_SUPABASE_ANON_KEY VITE_LENDER_NAME; do
+for key in VITE_SUPABASE_URL VITE_SUPABASE_ANON_KEY VITE_FIREBASE_API_KEY VITE_FIREBASE_AUTH_DOMAIN VITE_FIREBASE_PROJECT_ID VITE_FIREBASE_APP_ID VITE_LENDER_NAME; do
   value="$(grep "^$key=" .env | cut -d= -f2- | sed -E 's/^"(.*)"$/\1/')"
   [ -n "$value" ] && gh secret set "$key" --repo "$OWNER/$REPO" --body "$value"
 done

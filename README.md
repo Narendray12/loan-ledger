@@ -1,6 +1,6 @@
 # Loan Ledger
 
-Mobile-first PWA for a money lender. The admin types the paper **ऋण आवेदन पत्र / Loan Application Form** into the app, verifies the borrower's mobile by calling it in front of them, photographs the person, their ID and the signed form, and then tracks every loan as **monthly cards** (paid / unpaid, mark paid, undo).
+Mobile-first PWA for a money lender. The admin types the paper **ऋण आवेदन पत्र / Loan Application Form** into the app, verifies the borrower's mobile with an OTP, photographs the person, their ID and the signed form, and then tracks every loan as **monthly cards** (paid / unpaid, mark paid, undo).
 
 Works offline: everything is saved on the phone first (encrypted IndexedDB) and synced to Supabase when there is internet. See [PLAN.md](PLAN.md) for the design.
 
@@ -9,6 +9,7 @@ Works offline: everything is saved on the phone first (encrypted IndexedDB) and 
 - React 19 + TypeScript + Vite, Tailwind, `vite-plugin-pwa`
 - Dexie (IndexedDB) mirror + outbox, AES-GCM at rest, `src/lib/sync.ts`
 - Supabase (Postgres + RLS + Storage) as the source of truth, Mumbai region
+- Firebase Phone Auth **only** for sending the borrower's OTP (free tier)
 
 ## 1. One-time setup
 
@@ -28,11 +29,15 @@ Works offline: everything is saved on the phone first (encrypted IndexedDB) and 
    It prompts for email, name and password, creates the confirmed user, adds it to `admins`, and test-signs-in. **The first user created becomes the admin automatically.** Later admins are added from the app's Settings screen.
 6. **Settings → API**: copy the Project URL and the anon key into `.env` (see `.env.example`).
 
-### Phone verification
+### Firebase (borrower OTP, free)
 
-There is no SMS OTP and nothing to configure. The admin taps **Verify** on a borrower's number, calls
-it from the app while the borrower is present, sees their phone ring, and marks it verified. The
-verification is stored with the number and shows as a badge wherever that number appears.
+1. Create a Firebase project → **Authentication → Sign-in method → Phone → Enable**.
+2. **Authentication → Settings → Authorized domains**: add the domain the app is served from (localhost is already there).
+3. **Project settings → Your apps → Add web app** and copy `apiKey`, `authDomain`, `projectId`, `appId` into `.env`.
+4. Optional for development: _Phone numbers for testing_ lets you add a number with a fixed code so no SMS is sent.
+5. Firebase may ask for a billing card to enable phone sign-in; the first 10,000 verifications a month are free and India is included. Google delivers the SMS, so no TRAI DLT registration is needed.
+
+If the Firebase keys are left empty the app still works; the **Verify** button explains that OTP is not set up.
 
 ### Environment
 
@@ -74,7 +79,7 @@ The seed creates `admin@example.com` / `password123` as the admin. Use the print
 | Local database | `src/lib/db.ts` (Dexie) — mirror of the server tables plus `drafts`, `outbox`, `blobs`                                                                          |
 | Sync           | `src/lib/sync.ts` — push the outbox FIFO, then pull rows changed since the last pull; newer local edits win                                                     |
 | Photos         | `src/lib/docs.ts`, `src/lib/image.ts` — resize to ≤1600 px JPEG, strip EXIF, encrypt locally, upload, keep a thumbnail                                          |
-| Verification   | `src/components/VerifyPhoneSheet.tsx` — call the number in front of the borrower, mark it verified                                                              |
+| OTP            | `src/lib/otp.ts`, `src/components/VerifyPhoneSheet.tsx` — Firebase Phone Auth, loaded on demand                                                                 |
 | Database       | `supabase/migrations/20260905000000_init.sql` — tables, RLS (`is_admin()`), encrypted ID numbers (`upsert_person`, `reveal_id`), audit log, loan status trigger |
 
 Security notes: only users in `public.admins` can read or write anything (RLS); ID numbers are stored encrypted in a table the client role cannot read and are revealed only through an audited function; local drafts, queued changes and photos are AES-GCM encrypted with a per-device key; signing out wipes the phone.
@@ -88,6 +93,8 @@ repository secrets named exactly like the `VITE_*` keys in `.env.example`
 
 - Supabase → Authentication → URL configuration: add the Pages URL as Site URL / redirect URL
   so password-reset links open the app.
+- Firebase → Authentication → Settings → Authorized domains: add `<user>.github.io` so the
+  borrower OTP works from the hosted app.
 
 ## Design
 
