@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
 /* Passbook design system: ledger paper and ink. Green means paid, red means late,
-   nothing else is coloured. Amounts and names in Bricolage Grotesque, everything else in
-   IBM Plex Sans with tabular numerals. */
+   nothing else is coloured. One typeface, Manrope, with tabular numerals; amounts and
+   names use its heaviest weights. */
 @theme {
-  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Bricolage Grotesque', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --color-paper: #f4f7f3;
   --color-tint: #e3ece1;
@@ -39,7 +39,7 @@ body {
 /* Amounts, names, headings. */
 .num {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' 96;
+  font-weight: 800;
   letter-spacing: -0.02em;
   font-feature-settings: 'tnum' 1;
 }
