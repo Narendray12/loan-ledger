@@ -34,14 +34,36 @@ function getFirebaseAuth(): Auth {
   return auth
 }
 
+/** Drop the current widget (if any) and empty the container so the next attempt starts clean. */
+export function resetOtp(container?: HTMLElement | null): void {
+  try {
+    verifier?.clear()
+  } catch {
+    // an already-removed widget throws; nothing left to clear
+  }
+  verifier = undefined
+  container?.replaceChildren()
+}
+
+/**
+ * Sends the code. reCAPTCHA refuses to render twice into the same element, so each attempt
+ * gets a brand-new child of `container`; a failed send resets it for the retry.
+ */
 export async function sendOtp(
   phoneE164: string,
   container: HTMLElement,
 ): Promise<ConfirmationResult> {
   const a = getFirebaseAuth()
-  verifier?.clear()
-  verifier = new RecaptchaVerifier(a, container, { size: 'invisible' })
-  return signInWithPhoneNumber(a, phoneE164, verifier)
+  resetOtp(container)
+  const slot = document.createElement('div')
+  container.appendChild(slot)
+  verifier = new RecaptchaVerifier(a, slot, { size: 'invisible' })
+  try {
+    return await signInWithPhoneNumber(a, phoneE164, verifier)
+  } catch (e) {
+    resetOtp(container)
+    throw e
+  }
 }
 
 /** Resolves with a proof string once the code is right; the throwaway session is signed out. */

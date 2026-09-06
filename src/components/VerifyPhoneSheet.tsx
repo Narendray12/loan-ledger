@@ -40,6 +40,7 @@ export function VerifyPhoneSheet({
       setCode('')
       setError(null)
       resultRef.current = null
+      otpRef.current?.resetOtp(captchaRef.current)
     }
   }, [open])
 
@@ -90,6 +91,7 @@ export function VerifyPhoneSheet({
     <Sheet
       open={open}
       onClose={onClose}
+      modal={false}
       title="Verify mobile number"
       subtitle={`A 6-digit code goes by SMS to +91 ${phone10}. Ask them to read it out.`}
     >
